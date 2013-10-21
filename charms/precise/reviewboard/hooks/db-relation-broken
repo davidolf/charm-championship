@@ -1,0 +1,14 @@
+#!/bin/bash
+# This hook runs when the full relation is removed (not just a single member)
+
+source settings.sh
+
+cat << EOF > settings.sh
+dbtype=sqlite3
+dbname=/var/www/reviewboard/data/reviewboard.db
+cachetype=$cachetype
+cacheinfo=$cacheinfo
+EOF
+
+source ${CHARM_DIR}/hooks/rb-site-install
+

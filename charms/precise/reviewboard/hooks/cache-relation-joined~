@@ -1,0 +1,32 @@
+#!/bin/bash
+# This must be renamed to the name of the relation. The goal here is to
+# affect any change needed by relationships being formed
+# This script should be idempotent.
+juju-log $JUJU_REMOTE_UNIT joined
+
+source settings.sh
+
+cachehost=`relation-get host`
+cacheport=`relation-get port`
+
+if [ $dbtype = "sqlite3" ]; then
+cat << EOF > settings.sh
+dbtype=$dbtype
+dbname=$dbname
+cachetype=memcached
+cacheinfo=$cachehost:$cacheport
+EOF
+else
+cat << EOF > settings.sh
+dbtype=$dbtype
+dbname=$dbname
+dbhost=$dbhost
+dbuser=$dbuser
+dbpassword=$dbpassword
+cachetype=memcached
+cacheinfo=$cachehost:$cacheport
+EOF
+fi
+
+source ${CHARM_DIR}/hooks/rb-site-install
+
