@@ -1,4 +1,0 @@
-#!/bin/bash
-# config-changed occurs everytime a new configuration value is updated (juju set)
-
-source ${CHARM_DIR}/hooks/rb-site-install

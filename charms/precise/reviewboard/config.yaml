@@ -1,9 +1,0 @@
-options:
-  admin-username:
-    type: string
-    default: "admin"
-    description: "Admin user name to use for logging in"
-  admin-password:
-    type: string
-    default: "juju"
-    description: "Admin password"
