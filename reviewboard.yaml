@@ -1,7 +1,7 @@
 envExport: 
   services: 
     reviewboard: 
-      charm: "cs:~davidolf/precise/reviewboard-1"
+      charm: "cs:~davidolf/precise/reviewboard-2"
       num_units: 1
       annotations: 
         "gui-x": "1042"
